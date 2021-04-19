@@ -1,87 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Poker de Cartas</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
-    <script src='js/cartas.js'></script>
-     <link rel="stylesheet" type="text/css"  href="css/css.css">
-	<title>JUEGO DE CARTAS</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+   
+    <title>Juego de Cartas</title>
 </head>
+
 <body>
- 	<main>
-    <section class="imagen">
-      <img src="./img/1.png" alt="" width="100" height="100">
-      <img src="./img/2.png" alt="" width="100" height="100">
-      <img src="./img/3.png" alt="" width="100" height="100">
-      <img src="./img/4.png" alt="" width="100" height="100">
-      <img src="./img/5.png" alt=""  width="100" height="100">
-      <img src="./img/6.png" alt="" width="100" height="100">
-      <img src="./img/7.png" alt="" width="100" height="100">
-      <img src="./img/8.png" alt="" width="100" height="100">
-      <img src="./img/9.png" alt="" width="100" height="100">
-      <img src="./img/10.png" alt="" width="100" height="100">
-      <img src="./img/11.png" alt="" width="100" height="100">
-      <img src="./img/12.png" alt="" width="100" height="100">
-      <img src="./img/13.png" alt="" width="100" height="100">
-    </section>
-    <section class="container--table">
-      <button type="button" name="button" id="boton">Ver tabla</button>
-      <table id="tabla">
-        <tr>
-          <th>#</th>
-          <th>Carta</th>
-          <th>Cant</th>
-        </tr>
-      </table>
-    </section>
 
-    <section><button id="boton">Ejecutar</button></section>
-
-    <script type="text/javascript">
-    	function cargarTabla(){
-			var url = "https://carlosreneas.github.io/endpoints/cartas.json";
-
-			fetch(url)
-				.then(response => response.json())
-				.then(data=>generarTabla(data))
-			.catch(error=>{});
-		}
-
-		function generarTabla(json){
-			const tabla = document.getElementById("tabla");
-
-		}
-		function cargarTabla(){
-
-			const tabla = document.getElementById("tabla");
-
-			json.cartas.forEach( carta =>{
-			const tr = document.createElement('tr');
-			const num = document.createElement('td');
-				num.textContent =carta.numero;
-				tr.appendChild(num);
-			const nombre = document.createElement('td');
-				nombre.textContent =carta.carta;
-				tr.appendChild(nombre);
-			const cant = document.createElement('td');
-				cant.textContent =0;
-				tr.appendChild(cant);
-			
-
-			tabla.appendChild(tr);
-		})
-
-		}
-
-		document.getElementById("boton").onclick=cargarTabla;
-	</script>
+     <header id="head">
+     <div class="row">
+      <div class="col-md-4">
+        <img src="img/logo.jpg" id="logo">
+      </div>
+      <div class="col-md-8" id="text-head">
+        <h1>Juego de Cartas</h1>
+        <h5>Realizado por: Natalia Ortiz</h5>
+      </div>
+     </div>
+     
+     
+   </header>
 
 
+    <div class="contenedor">
+        <div class="row">
 
-    </script>
-    
+            <div class="columna">
+
+                <div id="grid" class="grid"> </div>
+            </div>
+
+            <div class="columna">
+                <div>
+
+                    <table id="table">
+                        <tr id="tr">
+                            <th>#</th>
+                            <th>Carta</th>
+                            <th>Cantidad</th>
+
+                        </tr>
+
+                </table>
+
+        </div>
+                <div class="form">
+
+                    <form>
+
+                        <label for="num">Número</label>
+                        <select id="num" name="num">
+
+                                     <option disabled selected>Elija número</option>
+
+                </select>
+
+                        <hr>
+
+                        <label for="descripcion">Carta</label>
+                        <input type="text" placeholder="Describa la carta" id="descripcion" name="descripcion">
+
+                        <input type="button" id="guardar" value="Guardar" onclick="guardarDatosCarta()">
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+   
 </body>
+
+<script src="js/cartajs.js"></script>
+<script src="js/cartasLista.js"></script>
 </html>
